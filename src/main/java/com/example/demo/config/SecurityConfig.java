@@ -145,6 +145,18 @@ public class SecurityConfig {
                 // ✅ Thêm quyền Gacha (Trừ pool đã public ở trên)
                 .requestMatchers("/api/gacha/**").authenticated() 
 
+                // ===== REACT STATIC & SPA ROUTES =====
+                .requestMatchers(
+                    "/",
+                    "/index.html",
+                    "/favicon.ico",
+                    "/assets/**",
+                    "/*.js",
+                    "/*.css",
+                    "/login",
+                    "/admin",
+                    "/game/**"
+                ).permitAll()
                 // ===== FALLBACK =====
                 .anyRequest().authenticated()
             );
