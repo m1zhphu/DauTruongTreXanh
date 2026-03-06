@@ -12,11 +12,10 @@ public class HealthCheckController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @GetMapping("/api/health")
+    // SỬA ĐƯỜNG DẪN Ở ĐÂY
+    @GetMapping({"/api/public/health", "/api/public/health/"}) 
     public ResponseEntity<String> healthCheck() {
-        // Gửi một câu truy vấn vô thưởng vô phạt xuống Aiven để ép nó luôn thức
         jdbcTemplate.execute("SELECT 1");
-        
         return ResponseEntity.ok("Backend and Database are both awake!");
     }
 }
