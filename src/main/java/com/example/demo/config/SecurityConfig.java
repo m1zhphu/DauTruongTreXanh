@@ -104,6 +104,7 @@ public class SecurityConfig {
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(auth -> auth
                 
+                .requestMatchers("/api/health").permitAll()
                 // ✅ 2. Cho phép phương thức OPTIONS (Preflight request) đi qua tất cả các endpoint
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
